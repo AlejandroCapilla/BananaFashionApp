@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "240838995379",
+    "project_id": "bananafashion-6e64f",
+    "storage_bucket": "bananafashion-6e64f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:240838995379:android:4d25eaf9355fe99fd7afc6",
+        "android_client_info": {
+          "package_name": "com.example.banana_fashion"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "240838995379-07m9usdb7m6a6ji8kfvuqtr2872250h7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.banana_fashion",
+            "certificate_hash": "499a4dd78c290f7493644f2691cfaf6fa76d2202"
+          }
+        },
+        {
+          "client_id": "240838995379-bjtltqgmgr9rqrc4pv50jgncc0mc0njg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFbxuyRPWxOFHFGYapJJpi3IWh4wlLE2E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "240838995379-35pibvkhgood7qqv0vc8135b13o2385r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -7,8 +7,6 @@ class ThemeProvider with ChangeNotifier {
       _themeData = StylesApp.darkTheme(context);
     } else if (theme == 'claro') {
       _themeData = StylesApp.lightTheme(context);
-    } else {
-      _themeData = StylesApp.linceTheme(context);
     }
     _theme = theme;
   }

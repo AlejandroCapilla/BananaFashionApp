@@ -15,7 +15,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
   @override
   Widget build(BuildContext context) {
-    ThemeProvider theme = Provider.of<ThemeProvider>(context);
     final user = FirebaseAuth.instance.currentUser!;
 
     return Scaffold(
@@ -56,9 +55,17 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   ),
                 )),
             ListTile(
-              onTap: () => Navigator.pushNamed(context, '/popular'),
-              title: const Text('API Movies'),
-              leading: const Icon(Icons.movie,
+              onTap: () => {},
+              title: const Text('Mi perfil'),
+              leading: const Icon(Icons.person,
+                  color: Color.fromARGB(255, 255, 220, 63)),
+              trailing: const Icon(Icons.chevron_right,
+                  color: Color.fromARGB(255, 255, 220, 63)),
+            ),
+            ListTile(
+              onTap: () => {},
+              title: const Text('Carrito de compras'),
+              leading: const Icon(Icons.shopping_cart,
                   color: Color.fromARGB(255, 255, 220, 63)),
               trailing: const Icon(Icons.chevron_right,
                   color: Color.fromARGB(255, 255, 220, 63)),

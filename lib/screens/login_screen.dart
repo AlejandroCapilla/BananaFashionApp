@@ -1,7 +1,9 @@
 import 'dart:async';
+import 'package:banana_fashion/provider/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:banana_fashion/firebase/auth_service.dart';
 import 'package:banana_fashion/widgets/loading_modal_widget.dart';
+import 'package:provider/provider.dart';
 import 'package:social_login_buttons/social_login_buttons.dart';
 import 'package:uni_links/uni_links.dart';
 import '../responsive.dart';
@@ -61,6 +63,14 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+    ThemeProvider theme = Provider.of<ThemeProvider>(context);
+    String background = theme.getTheme() == 'oscuro'
+        ? 'assets/dark_theme_background.png'
+        : 'assets/light_theme_background.png';
+    String logo = theme.getTheme() == 'oscuro'
+        ? 'assets/logo_transparent_white.png'
+        : 'assets/logo_transparent.png';
+
     final txtEmail = TextFormField(
       decoration: const InputDecoration(
           label: Text('Email User'), enabledBorder: OutlineInputBorder()),
@@ -129,10 +139,10 @@ class _LoginScreenState extends State<LoginScreen> {
                 txtRegister: txtRegister,
                 isLoading: isLoading),
             desktop: Container(
-              constraints: BoxConstraints.expand(),
-              decoration: const BoxDecoration(
+              constraints: const BoxConstraints.expand(),
+              decoration: BoxDecoration(
                   image: DecorationImage(
-                      image: AssetImage('assets/dark_theme_background.png'),
+                      image: AssetImage(background),
                       fit: BoxFit.cover,
                       opacity: 0.5)),
               child: Row(
@@ -142,7 +152,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     top: 40,
                     left: 40,
                     child: Image.asset(
-                      'assets/logo_transparent_white.png',
+                      logo,
                       height: 400,
                     ),
                   ),
@@ -198,13 +208,21 @@ class MobileWelcomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ThemeProvider theme = Provider.of<ThemeProvider>(context);
+    String background = theme.getTheme() == 'oscuro'
+        ? 'assets/dark_theme_background.png'
+        : 'assets/light_theme_background.png';
+    String logo = theme.getTheme() == 'oscuro'
+        ? 'assets/logo_transparent_white.png'
+        : 'assets/logo_transparent.png';
+
     return Stack(
       children: [
         Container(
           constraints: BoxConstraints.expand(),
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage('assets/dark_theme_background.png'),
+                  image: AssetImage(background),
                   fit: BoxFit.cover,
                   opacity: 0.9)),
           child: Padding(
@@ -233,7 +251,7 @@ class MobileWelcomeScreen extends StatelessWidget {
                 Positioned(
                   top: 40,
                   child: Image.asset(
-                    'assets/logo_transparent_white.png',
+                    logo,
                     height: 240,
                   ),
                 )

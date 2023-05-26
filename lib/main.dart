@@ -7,7 +7,6 @@ import 'package:banana_fashion/screens/concentric_transition.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-//AIzaSyC8pmLdrMOyeMW3yHPO6Li6jjsCf_O64WU  Api de mapas
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();

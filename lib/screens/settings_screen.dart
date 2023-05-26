@@ -13,7 +13,7 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
-  List<String> items = ['claro', 'oscuro', 'lince'];
+  List<String> items = ['claro', 'oscuro'];
   @override
   Widget build(BuildContext context) {
     ThemeProvider theme = Provider.of<ThemeProvider>(context);
@@ -60,9 +60,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       } else if (value == 'oscuro') {
                         changeTheme('oscuro');
                         theme.setThemeData(StylesApp.darkTheme(context));
-                      } else {
-                        changeTheme('lince');
-                        theme.setThemeData(StylesApp.linceTheme(context));
                       }
                       setState(() {
                         theme.setTheme(value!);

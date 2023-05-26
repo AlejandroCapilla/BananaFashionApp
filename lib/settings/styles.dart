@@ -20,13 +20,4 @@ class StylesApp {
           .copyWith(primary: Color.fromARGB(255, 255, 220, 63)),
     );
   }
-
-  static ThemeData linceTheme(BuildContext context) {
-    final ThemeData theme = ThemeData.light();
-    return theme.copyWith(
-      colorScheme: Theme.of(context)
-          .colorScheme
-          .copyWith(primary: Color.fromARGB(255, 255, 220, 63)),
-    );
-  }
 }

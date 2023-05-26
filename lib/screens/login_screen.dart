@@ -132,7 +132,7 @@ class _LoginScreenState extends State<LoginScreen> {
               constraints: BoxConstraints.expand(),
               decoration: const BoxDecoration(
                   image: DecorationImage(
-                      image: AssetImage('assets/light_teme_background.png'),
+                      image: AssetImage('assets/dark_theme_background.png'),
                       fit: BoxFit.cover,
                       opacity: 0.5)),
               child: Row(
@@ -142,7 +142,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     top: 40,
                     left: 40,
                     child: Image.asset(
-                      'assets/itcelaya_logo.png',
+                      'assets/logo_transparent_white.png',
                       height: 400,
                     ),
                   ),
@@ -204,7 +204,7 @@ class MobileWelcomeScreen extends StatelessWidget {
           constraints: BoxConstraints.expand(),
           decoration: const BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage('assets/light_theme_background.png'),
+                  image: AssetImage('assets/dark_theme_background.png'),
                   fit: BoxFit.cover,
                   opacity: 0.9)),
           child: Padding(
@@ -233,7 +233,7 @@ class MobileWelcomeScreen extends StatelessWidget {
                 Positioned(
                   top: 40,
                   child: Image.asset(
-                    'assets/logo_transparent.png',
+                    'assets/logo_transparent_white.png',
                     height: 240,
                   ),
                 )

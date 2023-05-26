@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:banana_fashion/models/github_login_request.dart';
 import 'package:banana_fashion/models/github_login_response.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:http/http.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'secret_keys.dart' as SecretKey;
 import 'package:http/http.dart' as http;

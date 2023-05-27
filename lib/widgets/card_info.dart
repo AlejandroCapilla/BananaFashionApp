@@ -42,7 +42,8 @@ class CardInfo extends StatelessWidget {
                 data.title.toUpperCase(),
                 style: TextStyle(
                   color: data.titleColor,
-                  fontSize: 20,
+                  fontFamily: 'Roundman',
+                  fontSize: 24,
                   fontWeight: FontWeight.bold,
                   letterSpacing: 1,
                 ),
@@ -53,7 +54,8 @@ class CardInfo extends StatelessWidget {
                 data.subtitle,
                 style: TextStyle(
                   color: data.subtitleColor,
-                  fontSize: 16,
+                  fontFamily: 'Roundman',
+                  fontSize: 20,
                 ),
                 textAlign: TextAlign.center,
                 maxLines: 2,

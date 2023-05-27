@@ -121,8 +121,10 @@ class _LoginScreenState extends State<LoginScreen> {
           Navigator.pushNamed(context, '/register');
         },
         child: const Text('Registrarse',
-            style:
-                TextStyle(decoration: TextDecoration.underline, fontSize: 15)),
+            style: TextStyle(
+                decoration: TextDecoration.underline,
+                fontSize: 18,
+                fontFamily: 'Roundman')),
       ),
     );
 

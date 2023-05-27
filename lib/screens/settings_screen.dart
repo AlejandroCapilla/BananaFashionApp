@@ -35,7 +35,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
         '         Logout         ',
         style: TextStyle(
           color: Colors.black,
-          fontWeight: FontWeight.bold,
+          fontFamily: 'Roundman',
+          fontWeight: FontWeight.w500,
+          fontSize: 16,
           letterSpacing: 1,
         ),
       ),
@@ -50,7 +52,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
               spaceHorizontal,
               Row(
                 children: [
-                  const Text('Tema: '),
+                  const Text(
+                    'Tema:    ',
+                    style: TextStyle(fontFamily: 'Roundman', fontSize: 16),
+                  ),
                   DropdownButton<String>(
                     value: theme.getTheme(),
                     onChanged: (value) {
@@ -68,7 +73,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     items: items.map((String item) {
                       return DropdownMenuItem<String>(
                         value: item,
-                        child: Text(item),
+                        child: Text(
+                          item,
+                          style: const TextStyle(
+                              fontFamily: 'Roundman',
+                              fontSize: 16,
+                              letterSpacing: 1),
+                        ),
                       );
                     }).toList(),
                   )

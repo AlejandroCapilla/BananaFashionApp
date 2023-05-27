@@ -16,17 +16,24 @@ class _DashboardScreenState extends State<DashboardScreen> {
   @override
   Widget build(BuildContext context) {
     final user = FirebaseAuth.instance.currentUser!;
+    ThemeProvider theme = Provider.of<ThemeProvider>(context);
 
     return Scaffold(
       appBar: AppBar(
         title: const Text(
           'Banana Fashion',
           style: TextStyle(
-            color: Colors.black,
-            fontWeight: FontWeight.bold,
+            color: Color.fromARGB(255, 255, 220, 63),
+            fontSize: 24,
+            fontWeight: FontWeight.w500,
+            fontFamily: 'Roundman',
             letterSpacing: 1,
           ),
         ),
+        backgroundColor: theme.getTheme() == 'oscuro'
+            ? const Color.fromARGB(255, 70, 70, 70)
+            : Colors.white,
+        foregroundColor: const Color.fromARGB(255, 255, 220, 63),
       ),
       // body: const ListPostScreen() == true
       //     ? const ListPostScreen()
@@ -42,6 +49,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 accountName: Text(
                   user.displayName!,
                   style: const TextStyle(
+                    fontFamily: 'Roundman',
                     color: Colors.black,
                     fontWeight: FontWeight.bold,
                     letterSpacing: 1,
@@ -50,13 +58,15 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 accountEmail: Text(
                   user.email!,
                   style: const TextStyle(
+                    fontFamily: 'Roundman',
                     color: Colors.black,
                     letterSpacing: 1,
                   ),
                 )),
             ListTile(
               onTap: () => {},
-              title: const Text('Mi perfil'),
+              title: const Text('Mi perfil',
+                  style: TextStyle(fontFamily: 'Roundman')),
               leading: const Icon(Icons.person,
                   color: Color.fromARGB(255, 255, 220, 63)),
               trailing: const Icon(Icons.chevron_right,
@@ -64,7 +74,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
             ),
             ListTile(
               onTap: () => {},
-              title: const Text('Carrito de compras'),
+              title: const Text('Carrito de compras',
+                  style: TextStyle(fontFamily: 'Roundman')),
               leading: const Icon(Icons.shopping_cart,
                   color: Color.fromARGB(255, 255, 220, 63)),
               trailing: const Icon(Icons.chevron_right,
@@ -72,7 +83,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
             ),
             ListTile(
               onTap: () => Navigator.pushNamed(context, '/settings'),
-              title: const Text('Settings'),
+              title: const Text('Settings',
+                  style: TextStyle(fontFamily: 'Roundman')),
               leading: const Icon(Icons.settings,
                   color: Color.fromARGB(255, 255, 220, 63)),
               trailing: const Icon(Icons.chevron_right,

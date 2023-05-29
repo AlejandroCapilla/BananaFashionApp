@@ -19,6 +19,8 @@ class _LoginScreenState extends State<LoginScreen> {
   late StreamSubscription? _subs;
   final AuthService authService = AuthService();
   bool isLoading = false;
+  TextEditingController passwordController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
 
   @override
   void initState() {
@@ -72,11 +74,13 @@ class _LoginScreenState extends State<LoginScreen> {
         : 'assets/logo_transparent.png';
 
     final txtEmail = TextFormField(
+      controller: emailController,
       decoration: const InputDecoration(
           label: Text('Email User'), enabledBorder: OutlineInputBorder()),
     );
 
     final txtPass = TextFormField(
+      controller: passwordController,
       obscureText: true,
       decoration: const InputDecoration(
           label: Text('Password User'), enabledBorder: OutlineInputBorder()),
@@ -93,13 +97,7 @@ class _LoginScreenState extends State<LoginScreen> {
     final btnLogin = SocialLoginButton(
         buttonType: SocialLoginButtonType.generalLogin,
         onPressed: () {
-          isLoading = true;
-          setState(() {});
-          Future.delayed(Duration(milliseconds: 2000)).then((value) {
-            isLoading = false;
-            setState(() {});
-            Navigator.pushNamed(context, '/dash');
-          });
+          AuthService().signIn(emailController.text, passwordController.text);
         });
 
     final btnGoogle = SocialLoginButton(
@@ -115,7 +113,7 @@ class _LoginScreenState extends State<LoginScreen> {
         });
 
     final txtRegister = Padding(
-      padding: const EdgeInsets.all(20),
+      padding: const EdgeInsets.all(0),
       child: TextButton(
         onPressed: () {
           Navigator.pushNamed(context, '/register');
@@ -124,6 +122,20 @@ class _LoginScreenState extends State<LoginScreen> {
             style: TextStyle(
                 decoration: TextDecoration.underline,
                 fontSize: 18,
+                fontFamily: 'Roundman')),
+      ),
+    );
+
+    final txtForgotPassword = Padding(
+      padding: const EdgeInsets.all(0),
+      child: TextButton(
+        onPressed: () {
+          Navigator.pushNamed(context, '/forgot_password');
+        },
+        child: const Text('Olvide mi contraseña',
+            style: TextStyle(
+                decoration: TextDecoration.underline,
+                fontSize: 16,
                 fontFamily: 'Roundman')),
       ),
     );
@@ -139,6 +151,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 btnGoogle: btnGoogle,
                 btnFacebook: btnFacebook,
                 txtRegister: txtRegister,
+                txtForgotPassword: txtForgotPassword,
                 isLoading: isLoading),
             desktop: Container(
               constraints: const BoxConstraints.expand(),
@@ -175,7 +188,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         spaceHorizontal,
                         btnFacebook,
                         spaceHorizontal,
-                        txtRegister
+                        txtRegister,
+                        txtForgotPassword
                       ],
                     ),
                   ),
@@ -196,6 +210,7 @@ class MobileWelcomeScreen extends StatelessWidget {
     required this.btnGoogle,
     required this.btnFacebook,
     required this.txtRegister,
+    required this.txtForgotPassword,
     required this.isLoading,
   });
 
@@ -206,6 +221,7 @@ class MobileWelcomeScreen extends StatelessWidget {
   final SocialLoginButton btnGoogle;
   final SocialLoginButton btnFacebook;
   final Padding txtRegister;
+  final Padding txtForgotPassword;
   final bool isLoading;
 
   @override
@@ -247,7 +263,8 @@ class MobileWelcomeScreen extends StatelessWidget {
                     spaceHorizontal,
                     btnFacebook,
                     spaceHorizontal,
-                    txtRegister
+                    txtRegister,
+                    txtForgotPassword
                   ],
                 ),
                 Positioned(

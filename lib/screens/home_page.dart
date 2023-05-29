@@ -1,3 +1,4 @@
+import 'package:banana_fashion/screens/verify_email_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:banana_fashion/screens/dashboard_screen.dart';
@@ -21,7 +22,12 @@ class _HomePageState extends State<HomePage> {
               } else if (snapshot.hasError) {
                 return const Center(child: Text('Algo salio mal :('));
               } else if (snapshot.hasData) {
-                return DashboardScreen();
+                return FirebaseAuth
+                        .instance.currentUser!.providerData[0].providerId
+                        .toLowerCase()
+                        .contains('password')
+                    ? VerifyEmailScreen()
+                    : DashboardScreen();
               } else {
                 return LoginScreen();
               }

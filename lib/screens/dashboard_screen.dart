@@ -54,10 +54,13 @@ class _DashboardScreenState extends State<DashboardScreen> {
           children: [
             UserAccountsDrawerHeader(
                 currentAccountPicture: CircleAvatar(
-                  backgroundImage: NetworkImage(user.photoURL!),
+                  backgroundImage: user.photoURL != null
+                      ? NetworkImage(user.photoURL!)
+                      : const NetworkImage(
+                          'https://definicion.de/wp-content/uploads/2019/07/perfil-de-usuario.png'),
                 ),
                 accountName: Text(
-                  user.displayName!,
+                  user.displayName != null ? user.displayName! : '',
                   style: const TextStyle(
                     fontFamily: 'Roundman',
                     color: Colors.black,
@@ -66,7 +69,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   ),
                 ),
                 accountEmail: Text(
-                  user.email!,
+                  user.email != null ? user.email! : '',
                   style: const TextStyle(
                     fontFamily: 'Roundman',
                     color: Colors.black,

@@ -1,4 +1,6 @@
+import 'package:banana_fashion/screens/forgot_password_screen.dart';
 import 'package:banana_fashion/screens/home_page.dart';
+import 'package:banana_fashion/screens/register_screen.dart';
 import 'package:banana_fashion/screens/settings_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:banana_fashion/screens/login_screen.dart';
@@ -8,5 +10,7 @@ Map<String, WidgetBuilder> getApplicationRoutes() {
     '/login': (BuildContext context) => const LoginScreen(),
     '/home': (BuildContext context) => const HomePage(),
     '/settings': (BuildContext context) => const SettingsScreen(),
+    '/register': (BuildContext context) => const RegisterScreen(),
+    '/forgot_password': (BuildContext context) => const ForgotPasswordScreen(),
   };
 }

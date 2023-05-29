@@ -9,6 +9,7 @@ import 'secret_keys.dart' as SecretKey;
 import 'package:http/http.dart' as http;
 
 class AuthService extends ChangeNotifier {
+  bool isVerified = false;
   final googleSignIn = GoogleSignIn();
   GoogleSignInAccount? _user;
   GoogleSignInAccount get user => _user!;
@@ -78,5 +79,38 @@ class AuthService extends ChangeNotifier {
     final User user =
         (await FirebaseAuth.instance.signInWithCredential(credential)).user!;
     return user;
+  }
+
+  // Autenticacion con correo y contrasena
+  Future signIn(String email, String password) async {
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: email.trim(), password: password.trim());
+  }
+
+  Future signUp(String email, String password, BuildContext context) async {
+    try {
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          email: email.trim(), password: password.trim());
+      Navigator.pop(context);
+    } on FirebaseAuthException catch (e) {
+      print(e);
+
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(e.message!)));
+    }
+  }
+
+  Future resetPassword(String email, BuildContext context) async {
+    try {
+      await FirebaseAuth.instance.sendPasswordResetEmail(email: email.trim());
+
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          content:
+              Text('Se ha enviado un correo para restablecer la contraseña')));
+      Navigator.pop(context);
+    } on FirebaseAuthException catch (e) {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(e.message!)));
+    }
   }
 }

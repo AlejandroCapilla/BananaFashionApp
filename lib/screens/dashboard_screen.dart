@@ -1,4 +1,6 @@
+import 'package:banana_fashion/main.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../provider/theme_provider.dart';
@@ -11,10 +13,21 @@ class DashboardScreen extends StatefulWidget {
 }
 
 class _DashboardScreenState extends State<DashboardScreen> {
+  Future<void> setupInteractedMessage() async {
+    FirebaseMessaging.instance.getInitialMessage();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    setupInteractedMessage();
+  }
+
   bool isDarkThemeEnable = true;
 
   @override
   Widget build(BuildContext context) {
+    contextForNotification = context;
     final user = FirebaseAuth.instance.currentUser!;
     ThemeProvider theme = Provider.of<ThemeProvider>(context);
 
@@ -35,9 +48,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
             : Colors.white,
         foregroundColor: const Color.fromARGB(255, 255, 220, 63),
       ),
-      // body: const ListPostScreen() == true
-      //     ? const ListPostScreen()
-      //     : ListPostScreen(),
       body: Container(),
       drawer: Drawer(
         child: ListView(

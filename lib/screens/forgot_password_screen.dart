@@ -38,6 +38,13 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                   const SnackBar(content: Text('Ingrese un correo valido :)')));
             }
           },
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all<Color>(Color.fromARGB(
+                255,
+                255,
+                220,
+                63)), // Reemplaza Colors.blue con el color deseado
+          ),
           child: const Text(
             'Reestablecer contraseña',
             style: TextStyle(

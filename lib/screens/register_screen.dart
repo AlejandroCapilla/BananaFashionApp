@@ -60,10 +60,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   const SnackBar(content: Text('Ingrese valores validos :)')));
             }
           },
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all<Color>(Color.fromARGB(
+                255,
+                255,
+                220,
+                63)), // Reemplaza Colors.blue con el color deseado
+          ),
           child: const Text(
             '   Registrarme   ',
             style: TextStyle(
-              color: Colors.white,
+              color: Color.fromARGB(255, 0, 0, 0),
               fontFamily: 'Roundman',
               fontWeight: FontWeight.w500,
               fontSize: 16,

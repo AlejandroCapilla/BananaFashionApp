@@ -31,6 +31,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
         AuthService().logout();
         Navigator.pop(context);
       },
+      style: ButtonStyle(
+        backgroundColor: MaterialStateProperty.all<Color>(Color.fromARGB(
+            255, 255, 220, 63)), // Reemplaza Colors.blue con el color deseado
+      ),
       child: const Text(
         '         Logout         ',
         style: TextStyle(

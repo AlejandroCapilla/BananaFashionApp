@@ -6,6 +6,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../provider/theme_provider.dart';
 
 class DashboardScreen extends StatefulWidget {
@@ -18,6 +19,14 @@ class DashboardScreen extends StatefulWidget {
 class _DashboardScreenState extends State<DashboardScreen> {
   Future<void> setupInteractedMessage() async {
     FirebaseMessaging.instance.getInitialMessage();
+  }
+
+  String? image_path;
+
+  getImage() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? image = prefs.getString('image_profile');
+    image_path = image;
   }
 
   @override
@@ -33,6 +42,15 @@ class _DashboardScreenState extends State<DashboardScreen> {
     contextForNotification = context;
     final user = FirebaseAuth.instance.currentUser!;
     ThemeProvider theme = Provider.of<ThemeProvider>(context);
+
+    NetworkImage photo() {
+      if (image_path == null) {
+        return const NetworkImage(
+            'https://definicion.de/wp-content/uploads/2019/07/perfil-de-usuario.png');
+      } else {
+        return NetworkImage(image_path.toString());
+      }
+    }
 
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
@@ -71,11 +89,14 @@ class _DashboardScreenState extends State<DashboardScreen> {
         child: ListView(
           children: [
             UserAccountsDrawerHeader(
+                decoration: BoxDecoration(
+                  color: Color.fromARGB(255, 255, 220,
+                      63), // Reemplaza Colors.blue con el color deseado
+                ),
                 currentAccountPicture: CircleAvatar(
                   backgroundImage: user.photoURL != null
                       ? NetworkImage(user.photoURL!)
-                      : const NetworkImage(
-                          'https://definicion.de/wp-content/uploads/2019/07/perfil-de-usuario.png'),
+                      : photo(),
                 ),
                 accountName: Text(
                   user.displayName != null ? user.displayName! : '',
@@ -95,7 +116,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   ),
                 )),
             ListTile(
-              onTap: () {},
+              onTap: () => {Navigator.pushNamed(context, '/profile')},
               title: const Text('Mi perfil',
                   style: TextStyle(fontFamily: 'Roundman')),
               leading: const Icon(Icons.person,

@@ -1,9 +1,11 @@
 import 'dart:convert';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:banana_fashion/models/github_login_request.dart';
 import 'package:banana_fashion/models/github_login_response.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'secret_keys.dart' as SecretKey;
 import 'package:http/http.dart' as http;
@@ -89,8 +91,9 @@ class AuthService extends ChangeNotifier {
 
   Future signUp(String email, String password, BuildContext context) async {
     try {
-      await FirebaseAuth.instance.createUserWithEmailAndPassword(
-          email: email.trim(), password: password.trim());
+      UserCredential userCredential = await FirebaseAuth.instance
+          .createUserWithEmailAndPassword(
+              email: email.trim(), password: password.trim());
       Navigator.pop(context);
     } on FirebaseAuthException catch (e) {
       print(e);

@@ -63,7 +63,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
           child: const Text(
             '   Registrarme   ',
             style: TextStyle(
-              color: Colors.black,
+              color: Colors.white,
               fontFamily: 'Roundman',
               fontWeight: FontWeight.w500,
               fontSize: 16,
@@ -77,6 +77,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
     );
 
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(20.0),

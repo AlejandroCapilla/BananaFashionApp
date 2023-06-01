@@ -70,6 +70,7 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
     return isEmailVerified
         ? DashboardScreen()
         : Scaffold(
+            backgroundColor: Theme.of(context).colorScheme.background,
             body: SafeArea(
               child: Padding(
                 padding: const EdgeInsets.all(20.0),

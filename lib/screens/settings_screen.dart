@@ -44,6 +44,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     );
 
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(20.0),

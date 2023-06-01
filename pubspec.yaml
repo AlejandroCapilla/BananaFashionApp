@@ -44,6 +44,10 @@ dependencies:
   url_launcher: ^6.1.10
   uni_links: ^0.5.1
   provider: ^6.0.5
+  cached_network_image: ^3.2.3
+  flexi_productimage_slider: ^1.0.1
+  shimmer: ^3.0.0
+
 
   #Firebase
   firebase_core: ^2.8.0

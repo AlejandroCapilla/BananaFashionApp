@@ -55,6 +55,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
     );
 
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(20.0),

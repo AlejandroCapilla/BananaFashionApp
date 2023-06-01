@@ -1,4 +1,7 @@
 import 'package:banana_fashion/main.dart';
+import 'package:banana_fashion/models/productos_model.dart';
+import 'package:banana_fashion/widgets/card_producto.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
@@ -32,6 +35,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
     ThemeProvider theme = Provider.of<ThemeProvider>(context);
 
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
         title: const Text(
           'Banana Fashion',
@@ -43,12 +47,26 @@ class _DashboardScreenState extends State<DashboardScreen> {
             letterSpacing: 1,
           ),
         ),
-        backgroundColor: theme.getTheme() == 'oscuro'
-            ? const Color.fromARGB(255, 70, 70, 70)
-            : Colors.white,
-        foregroundColor: const Color.fromARGB(255, 255, 220, 63),
       ),
-      body: Container(),
+      body: StreamBuilder(
+        stream: FirebaseFirestore.instance.collection('productos').snapshots(),
+        builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+          if (snapshot.hasData) {
+            return ListView.builder(
+              padding: const EdgeInsets.all(20),
+              itemCount: snapshot.data.docs.length,
+              itemBuilder: (context, index) {
+                return CardProducto(
+                  productosModel:
+                      ProductosModel.fromFirestore(snapshot.data!.docs[index]),
+                );
+              },
+            );
+          } else {
+            return Text("no data");
+          }
+        },
+      ),
       drawer: Drawer(
         child: ListView(
           children: [
@@ -77,7 +95,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   ),
                 )),
             ListTile(
-              onTap: () => {},
+              onTap: () {},
               title: const Text('Mi perfil',
                   style: TextStyle(fontFamily: 'Roundman')),
               leading: const Icon(Icons.person,
@@ -86,7 +104,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   color: Color.fromARGB(255, 255, 220, 63)),
             ),
             ListTile(
-              onTap: () => {},
+              onTap: () => {Navigator.pushNamed(context, '/carrito')},
               title: const Text('Carrito de compras',
                   style: TextStyle(fontFamily: 'Roundman')),
               leading: const Icon(Icons.shopping_cart,

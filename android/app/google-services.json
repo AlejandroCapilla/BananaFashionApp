@@ -22,6 +22,14 @@
           }
         },
         {
+          "client_id": "240838995379-tqrbek79cv9mc8h75kva0drucrhokjt7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.banana_fashion",
+            "certificate_hash": "15d1bc722a296284f633bf105c54a9361138a88f"
+          }
+        },
+        {
           "client_id": "240838995379-bjtltqgmgr9rqrc4pv50jgncc0mc0njg.apps.googleusercontent.com",
           "client_type": 3
         }
